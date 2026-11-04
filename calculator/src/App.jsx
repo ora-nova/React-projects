@@ -46,7 +46,6 @@ switch(operator){
   break;
   case '-':
     result=pNum-a;  
-  
   break;
   case '÷':
     result=pNum/a;
@@ -54,8 +53,10 @@ switch(operator){
   case '×':
     result=pNum*a;  
   break;
-  default:
-    return;
+  case '%':
+    result=pNum%a;
+    break;
+  default:return;
 }
 
 setValue(String(result));
@@ -85,7 +86,7 @@ return(
 <tr className="grid grid-cols-4">
   <td className="text-center p-4 border" onClick={reset}>AC</td>
   <td className="text-center p-4 border">+/-</td>
-  <td className="text-center p-4 border ">%</td>
+  <td className="text-center p-4 border " onClick={handleOperator}>%</td>
   <td className="text-center p-4 border  bg-amber-600  text-white  border-black" onClick={handleOperator}>÷</td>
 </tr>
 
