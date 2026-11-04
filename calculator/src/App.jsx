@@ -2,24 +2,35 @@ import { useState } from 'react';
 
 function Calculator(){
 
-const[value, setValue]=useState("");
+const[value, setValue]=useState("0");
 const[pNum,setPNum]=useState(0);
 const[operator, setOperator]=useState("");
+const[ischanged,setIschanged]=useState(false)
 
 function handleClick(e){
- setValue((value)=> Number(value + e.target.innerText));
-
+  if(ischanged){
+    setValue(e.target.innerText==="."? "0.": e.target.innerText);
+    setIschanged(false);
+  }else if(e.target.innerText==="." && value==="0"){
+setValue("0.");
+  } else if(e.target.innerText==="." && value.includes(".")){
+return;
+  }else if(value === "0"){
+setValue(e.target.innerText);
+  }else{
+ setValue((value)=> value + e.target.innerText);
+  }
  
 
 };
 
 
 function handleOperator(e){
-setPNum(value);
+setPNum(Number(value));
 
 setOperator(e.target.innerText);
 
-setValue("");
+setIschanged(true);
 
 }
 
@@ -54,7 +65,10 @@ setOperator("");
 }
 
 function reset(){
-setValue(0)
+setValue("0");
+setPNum(0);
+setOperator("");
+setIschanged(false);
 }
 
 
