@@ -19,11 +19,18 @@ return;
 setValue(e.target.innerText);
   }else{
  setValue((value)=> value + e.target.innerText);
-  }
- 
+  };
 
 };
 
+function handlesign(){
+   if(!value.startsWith("-")){
+    if(value==="0") return;
+setValue("-"+value);
+ }else{
+  setValue(value.slice(1));
+ }
+};
 
 function handleOperator(e){
 setPNum(Number(value));
@@ -79,42 +86,42 @@ return(
     <caption className='block'>Calculator</caption>
     <thead className='block'>
       <tr className="grid grid-cols-4">
-        <th className="col-span-4 bg-gray-400  h-12 text-right text-3xl pr-3" >{value}</th>
+        <th className="col-span-4 bg-gray-500  h-12 text-right text-3xl pr-3 text-white" >{value}</th>
       </tr>
     </thead>
     <tbody className='block'>
 <tr className="grid grid-cols-4">
-  <td className="text-center p-4 border" onClick={reset}>AC</td>
-  <td className="text-center p-4 border">+/-</td>
-  <td className="text-center p-4 border " onClick={handleOperator}>%</td>
-  <td className="text-center p-4 border  bg-amber-600  text-white  border-black" onClick={handleOperator}>÷</td>
+  <td className="text-center p-4 border font-semibold border-gray-400" onClick={reset}>AC</td>
+  <td className="text-center p-4 border font-semibold border-gray-400" onClick={handlesign}>+/-</td>
+  <td className="text-center p-4 border font-semibold border-gray-400" onClick={handleOperator}>%</td>
+  <td className="text-center p-4 border  bg-amber-600  text-white  border-gray-400 font-semibold" onClick={handleOperator}>÷</td>
 </tr>
 
 <tr className="grid grid-cols-4">
-  <td className="text-center p-4 border" onClick={handleClick}>7</td>
-  <td className="text-center p-4 border" onClick={handleClick}> 8</td>
-  <td className="text-center p-4 border" onClick={handleClick}> 9</td>
-  <td className="text-center p-4 border  bg-amber-600 text-white border-black" onClick={handleOperator}>×</td>
+  <td className="text-center p-4 border font-semibold border-gray-400" onClick={handleClick}>7</td>
+  <td className="text-center p-4 border font-semibold border-gray-400" onClick={handleClick}> 8</td>
+  <td className="text-center p-4 border font-semibold border-gray-400" onClick={handleClick}> 9</td>
+  <td className="text-center p-4 border  bg-amber-600 text-white border-gray-400 font-semibold" onClick={handleOperator}>×</td>
 </tr>
 
 <tr className="grid grid-cols-4">
-  <td className="text-center p-4 border" onClick={handleClick}>4</td>
-  <td className="text-center p-4 border" onClick={handleClick}>5</td>
-  <td className="text-center p-4 border" onClick={handleClick}>6</td>
-  <td className="text-center p-4 border bg-amber-600  text-white  border-black" onClick={handleOperator}>-</td>
+  <td className="text-center p-4 border font-semibold border-gray-400" onClick={handleClick}>4</td>
+  <td className="text-center p-4 border font-semibold border-gray-400" onClick={handleClick}>5</td>
+  <td className="text-center p-4 border font-semibold border-gray-400" onClick={handleClick}>6</td>
+  <td className="text-center p-4 border bg-amber-600  text-white  border-gray-400 font-semibold" onClick={handleOperator}>-</td>
 </tr>
 
 <tr className="grid grid-cols-4">
-  <td className="text-center p-4 border" onClick={handleClick}>1</td>
-  <td className="text-center p-4 border" onClick={handleClick}> 2</td>
-  <td className="text-center p-4 border" onClick={handleClick}>3</td>
-  <td className="text-center p-4 border  bg-amber-600  text-white  border-black" onClick={handleOperator}>+</td>
+  <td className="text-center p-4 border font-semibold border-gray-400" onClick={handleClick}>1</td>
+  <td className="text-center p-4 border font-semibold border-gray-400" onClick={handleClick}> 2</td>
+  <td className="text-center p-4 border font-semibold border-gray-400" onClick={handleClick}>3</td>
+  <td className="text-center p-4 border  bg-amber-600  text-white  border-gray-400 font-semibold" onClick={handleOperator}>+</td>
 </tr>
 
 <tr className="grid grid-cols-4">
-  <td className="col-span-2 text-center p-4 border" onClick={handleClick}>0</td>
-  <td className="text-center p-4 border" onClick={handleClick}>.</td>
-  <td className="text-center p-4 border  bg-amber-600  text-white  border-black" onClick={handleEqual}>=</td>
+  <td className="col-span-2 text-center p-4 border font-semibold border-gray-400" onClick={handleClick}>0</td>
+  <td className="text-center p-4 border font-semibold border-gray-400" onClick={handleClick}>.</td>
+  <td className="text-center p-4 border  bg-amber-600  text-white  border-gray-400 font-semibold" onClick={handleEqual}>=</td>
 </tr>
 
     </tbody>
