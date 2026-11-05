@@ -49,7 +49,6 @@ function handleEqual(){
 switch(operator){
   case '+':
   result=pNum+a;  
-  
   break;
   case '-':
     result=pNum-a;  
@@ -82,7 +81,7 @@ setIschanged(false);
 
 
 return(
-  <table className="block w-full max-w-xs mx-auto">
+  <table className="block w-full max-w-xs mx-auto ">
     <caption className='block'>Calculator</caption>
     <thead className='block'>
       <tr className="grid grid-cols-4">
