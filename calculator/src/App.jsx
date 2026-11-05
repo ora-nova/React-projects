@@ -8,9 +8,6 @@ const[operator, setOperator]=useState("");
 
 function handleClick(e){
  setValue((value)=> Number(value + e.target.innerText));
-
- 
-
 };
 
 
@@ -21,7 +18,8 @@ setOperator(e.target.innerText);
 
 setValue("");
 
-}
+};
+
 
 function handleEqual(){
   let a=Number(value);
@@ -31,11 +29,9 @@ function handleEqual(){
 switch(operator){
   case '+':
   result=pNum+a;  
-  
   break;
   case '-':
     result=pNum-a;  
-  
   break;
   case '÷':
     result=pNum/a;
@@ -60,7 +56,7 @@ setValue(0)
 
 
 return(
-  <table className="block w-full max-w-xs mx-auto">
+  <table className="block w-full max-w-xs mx-auto ">
     <caption className='block'>Calculator</caption>
     <thead className='block'>
       <tr className="grid grid-cols-4">
@@ -70,7 +66,7 @@ return(
     <tbody className='block'>
 <tr className="grid grid-cols-4">
   <td className="text-center p-4 border" onClick={reset}>AC</td>
-  <td className="text-center p-4 border">+/-</td>
+  <td className="text-center p-4 border" >+/-</td>
   <td className="text-center p-4 border ">%</td>
   <td className="text-center p-4 border  bg-amber-600  text-white  border-black" onClick={handleOperator}>÷</td>
 </tr>
