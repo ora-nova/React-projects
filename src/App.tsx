@@ -3,6 +3,7 @@ import { useState } from 'react'
 function Todo(){
   const [task, setTask] = useState("");
   const [tasks, setTasks]=useState<string[]>([]);
+  const [isChecked, setisChecked]=useState(false);
 
   function handlechange(e:React.ChangeEvent<HTMLInputElement>){
 setTask(e.target.value);
@@ -16,10 +17,14 @@ setTask(e.target.value);
     setTask("");
   }
 
+  function handleChecboxchnages(e){
+setisChecked(e.target.checked)
+  };
   return(
     <>
+    <div className='flex flex-col  justify-center items-center h-screen w-full'>
     <h1 className='flex justify-center items-center  text-gray-500 text-8xl'>todos</h1>
-    <form className='flex justify-center items-center h-screen w-full'>
+    <form className=''>
       <label>Enter  Task:
         <div className='relative w-full'>
     <input type="text" 
@@ -40,15 +45,19 @@ setTask(e.target.value);
 
     <div>
       {tasks.map((item,index)=>{
-    return(<div key={index}>
-      <span>{item}</span>
+    return(<div><div key={index} className='flex gap-48'>
+      <input type='checkbox' checked={isChecked} onChange={handleChecboxchnages}/>
+      <span className={isChecked? "line-through":"text-black"}>{item}</span>
          <button className='' >
   <img src="/trash-solid-full.svg" className='w-8 h-8 ' />
   </button>
     </div>
+    </div>
     )
   })
   }
+    
+    </div>
     </div>
     </>
   )
