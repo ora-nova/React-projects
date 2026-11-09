@@ -60,7 +60,7 @@ switch(operator){
     result=pNum*a;  
   break;
   case '%':
-    result=pNum%a;
+    result=pNum/100;
     break;
   default:return;
 }
