@@ -67,6 +67,7 @@ setTasks(tasks.map((t)=>t.id=== id? {...t , checked: !t.checked}: t))
       <input type='checkbox' checked={items.checked} onChange={()=>handleChecboxchanges(items.id)}/>
       <span className={items.checked? "line-through":"text-black"} style={{overflowWrap:"break-word",width:'80%',color:'gray'}}>{items.txt}</span>
          </div>
+         
          <button type='button' className='' onClick={()=>deletetask(items.id)}>
           
   <img src="/trash-solid-full.svg" className='w-8 h-8 ' />
