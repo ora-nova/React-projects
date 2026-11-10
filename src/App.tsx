@@ -1,9 +1,15 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+
+interface Taskitem{
+  id:number,
+  txt:string,
+  checked:boolean
+}
 
 function Todo(){
   const [task, setTask] = useState("");
-  const [tasks, setTasks]=useState<string[]>([]);
-  const [isChecked, setisChecked]=useState(false);
+  const [tasks, setTasks]=useState<Taskitem[]>([]);
+  let init=useRef(1)
 
   function handlechange(e:React.ChangeEvent<HTMLInputElement>){
 setTask(e.target.value);
@@ -13,16 +19,27 @@ setTask(e.target.value);
     e.preventDefault();
     if(task.trim() === "") return;
 
-    setTasks([...tasks, task]);
+    const T: Taskitem={
+      id:init.current++,
+      txt:task,
+      checked:false
+
+    }
+
+    setTasks([...tasks, T]);
     setTask("");
   }
 
-  function handleChecboxchnages(e){
-setisChecked(e.target.checked)
+  function handleChecboxchanges(id: number){
+setTasks(tasks.map((t)=>t.id=== id? {...t , checked: !t.checked}: t))
   };
+
+  function deletetask(id: number){
+    setTasks(tasks.filter((t)=>t.id!==id))
+  }
   return(
     <>
-    <div className='flex flex-col  justify-center items-center h-screen w-full'>
+    <div className='flex flex-col  justify-center items-center gap-12 h-screen w-full'>
     <h1 className='flex justify-center items-center  text-gray-500 text-8xl'>todos</h1>
     <form className=''>
       <label>Enter  Task:
@@ -44,11 +61,14 @@ setisChecked(e.target.checked)
     </form>
 
     <div>
-      {tasks.map((item,index)=>{
-    return(<div><div key={index} className='flex gap-48'>
-      <input type='checkbox' checked={isChecked} onChange={handleChecboxchnages}/>
-      <span className={isChecked? "line-through":"text-black"}>{item}</span>
-         <button className='' >
+      {tasks.map((items)=>{
+    return(<div key={items.id} style={{width:'100%'}} className='border-b border-gray-400'><div className='flex  justify-between items-center p-2'>
+      <div className='flex items-center gap-2'>
+      <input type='checkbox' checked={items.checked} onChange={()=>handleChecboxchanges(items.id)}/>
+      <span className={items.checked? "line-through":"text-black"} style={{overflowWrap:"break-word",width:'80%',color:'gray'}}>{items.txt}</span>
+         </div>
+         <button type='button' className='' onClick={()=>deletetask(items.id)}>
+          
   <img src="/trash-solid-full.svg" className='w-8 h-8 ' />
   </button>
     </div>
