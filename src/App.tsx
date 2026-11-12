@@ -48,7 +48,7 @@ setTasks(tasks.map((t)=>t.id=== id? {...t , checked: !t.checked}: t))
     value={task} 
     onChange={handlechange} 
     placeholder='Add todo...'
-    className='rounded-full w-2xl h-12 shadow-2xl shadow-gray-900 pl-6 border-none focus:outline-hidden' 
+    className='rounded-full w-200 h-12 shadow-2xl shadow-gray-900 pl-6 border-none focus:outline-hidden' 
    
     />
     <button className='absolute right-2 top-1/2 transform -translate-y-1/2  pr-6' onClick={handleClick}>
@@ -60,12 +60,14 @@ setTasks(tasks.map((t)=>t.id=== id? {...t , checked: !t.checked}: t))
     </label>
     </form>
 
-    <div>
+    <div className='w-200'>
       {tasks.map((items)=>{
     return(<div key={items.id} style={{width:'100%'}} className='border-b border-gray-400'><div className='flex  justify-between items-center p-2'>
       <div className='flex items-center gap-2'>
       <input type='checkbox' checked={items.checked} onChange={()=>handleChecboxchanges(items.id)}/>
-      <span className={items.checked? "line-through":"text-black"} style={{overflowWrap:"break-word",width:'80%',color:'gray'}}>{items.txt}</span>
+      <span  className={`${
+    items.checked ? "line-through text-gray-500" : "text-gray-500"
+  } wrap-break-word whitespace-normal`}>{items.txt}</span>
          </div>
          
          <button type='button' className='' onClick={()=>deletetask(items.id)}>
